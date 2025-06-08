@@ -33,23 +33,15 @@ class Blockchain:
             print(f"Data: {block.data}")
             print(f"Previous Hash: {block.previous_hash}")
             print(f"Hash: {block.hash}")
-
-    def is_valid(self):
-        for i in range(1, len(self.chain)):
-            if self.chain[i].previous_hash != self.chain[i - 1].hash:
-                return False
-        return True
-
+            
 # Main
 bc = Blockchain()
-print("\n--- Original Blockchain ---")
+# Original Blockchain
 bc.display_chain()
-print("\nIs blockchain valid?", bc.is_valid())
 
-#Change Block 1's data
+# Change Block 1's data
 bc.chain[1].data = "Malicious Data"
 bc.chain[1].hash = bc.chain[1].calculate_hash()
 
-print("\n--- After Tampering Block 1 ---")
+# After Changes in Block 1
 bc.display_chain()
-print("\nIs blockchain valid?", bc.is_valid())
